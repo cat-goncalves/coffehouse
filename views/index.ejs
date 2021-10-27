@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Coffeehouse</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1>Coffeehouse</h1>
+        <!-- <img src="img/savage21.jpg" alt="coffee photo"> -->
+
+        <form action="order" method="post">
+            <input type="text" name="customerName" placeholder="Customer Name">
+            <select name="coffee" id="coffee">
+                <option value="hot coffee">Hot Coffee</option>
+                <option value="cold brew">Cold Brew</option>
+                <option value="latte">Latte</option>
+                <option value="cappucino">Cappucino</option>
+                <option value="espresso shot">Espresso Shot</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        <p>Login or Signup:</p>
+
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+
+    </div>
+
+</div>
+</body>
+</html>
