@@ -1,74 +1,94 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>Coffeehouse</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <title>Coffeehouse</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="container">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
+  <body>
+    <div class="container">
 
-    <div class="row">
+      <div class="page-header text-center">
+        <h1>Welcome, <%= user.local.email %></h1>
+      </div>
+
+      <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+        <div class='hide'>
+          <div class="well">
+            <h3><span class="fa fa-user"></span> Local</h3>
 
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
+            <% if (user.local.email) { %>
+              <p>
+                <strong>id</strong>: <%= user._id %><br>
+                  <strong>name</strong>: <%= user.local.email %><br>
+                    <strong>password</strong>: <%= user.local.password %>
+              </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+              <a href="/unlink/local" class="btn btn-default">Unlink</a>
+              <% } else { %>
+                <a href="/connect/local" class="btn btn-default">Connect Local</a>
                 <% } %>
 
-            </div>
+          </div>
         </div>
         <div class="col-sm-6">
           <!-- putting this in the doc to access it, doens't have to display -->
-          <h1 class="barista"><%= user.local.email %></h1> 
+          <h1 class="barista">
+            <%= user.local.email %>
+          </h1>
           <h3>Active Orders</h3>
           <ul class="messages">
-          <% for(var i=0; i<order.length; i++) {%>
-            <% if (order[i].complete === false) {%>
-              <li class="message">
-                <span><%= order[i].customerName %></span>
-                <span ><%= order[i].coffee %></span>
-                <span class="id"><%= order[i]._id %></span>
-                <span class="complete">complete</span>
-              </li>
-            <% } %>
+            <% for(var i=0; i<order.length; i++) {%>
+              <% if (order[i].complete===false) {%>
+                <li class="message">
+                  <span id="customerName_<%= order[i]._id %>">
+                    <%= order[i].customerName %>
+                  </span>
+                  <span>
+                    <%= order[i].coffee %>
+                  </span>
+                  <span class="id">
+                    <%= order[i]._id %>
+                  </span>
+                  <span><i id="<%= order[i]._id %>" class="bi bi-check2-circle"></i></span>
+                </li>
+                <% } %>
 
-          <% } %>
+                  <% } %>
           </ul>
-
+        </div>
+        <div class="col-sm-6">
           <h3>Completed Orders</h3>
           <ul class="messages">
-            <% for(var i = order.length - 1; i >= 0; i--) {%>
-              <% if (order[i].complete === true) {%>
-                <li class="message">
-                  <span><%= order[i].customerName %></span>
-                  <span><%= order[i].coffee %></span>
-                  <span><%= order[i].barista %></span>
+            <% for(var i=order.length - 1; i>= 0; i--) {%>
+              <% if (order[i].complete===true) {%>
+                <li class="completedOrders">
+                  <span>
+                    <%= order[i].customerName %>
+                  </span>
+                  <span>
+                    <%= order[i].coffee %>
+                  </span>
+                  <span>
+                    <%= order[i].barista %>
+                  </span>
                 </li>
-              <% } %>
-            <% } %>
+                <% } %>
+                  <% } %>
           </ul>
+          <i class="bi bi-trash"></i>
+        </div>
+      </div>
 
-</div>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
 
-<script src="main.js"></script>
-
-</body>
+        <script src="main.js"></script>
+  </body>
 </html>
