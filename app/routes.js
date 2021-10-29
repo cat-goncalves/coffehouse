@@ -11,6 +11,7 @@ module.exports = function(app, passport, db, ObjectId) {
     app.get('/profile', isLoggedIn, function(req, res) {
         db.collection('order').find().toArray((err, result) => {
           if (err) return console.log(err)
+          console.log({order: result})
           res.render('profile.ejs', {
             user : req.user,
             order: result
@@ -27,15 +28,16 @@ module.exports = function(app, passport, db, ObjectId) {
 // message board routes ===============================================================
 
     app.post('/order', (req, res) => {
+      console.log(res)
       db.collection('order').save({
         customerName: req.body.customerName, 
-        coffee: req.body.coffee, 
+        order: req.body.order, 
         complete: false,
         barista: ''
       }, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
-        res.redirect('/profile')
+        res.redirect('/')
       })
     })
 

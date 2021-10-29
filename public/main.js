@@ -1,50 +1,57 @@
-var complete = document.getElementsByClassName("bi-check2-circle");
-var trash = document.getElementsByClassName("bi bi-trash");
+document.querySelector('#sendOrder').addEventListener('click', sendOrder)
+document.querySelector('#clearOrder').addEventListener('click', clearOrder)
 
+let add = document.querySelectorAll(".addToOrder")
 
+let currentOrder = []
 
-Array.from(complete).forEach(function(element) {
-      element.addEventListener('click', function(event){    
-        const id = element.id
-        const barista = document.querySelector('.barista').innerText
-        const customerName = document.getElementById('customerName_' + id).innerText
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance(`Order ready for ${customerName}`))
+Array.from(add).forEach(function (element) {
+  element.addEventListener('click', addToOrder)
+})
 
-        fetch('order', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'id': id,
-            'barista': barista
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
+function addToOrder(event) {
+  let drink = event.target.parentNode.querySelector('input[name="drink"]').value
+  let temp = event.target.parentNode.querySelector(`input[name="${drink}-temp"]:checked`).value
+  let size = event.target.parentNode.querySelector(`input[name="${drink}-size"]:checked`).value
+  let sugar = event.target.parentNode.querySelector(`input[name="${drink}-sugar"]:checked`).value
+  let milk = event.target.parentNode.querySelector(`input[name="${drink}-milk"]:checked`).value
+  let other = event.target.parentNode.querySelector(`input[name="${drink}-other"]:checked`).value
 
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('profile', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
-});
+  let item = {
+    drink: drink,
+    temp: temp,
+    size: size,
+    sugar: sugar,
+    milk: milk,
+    other: other,
+  }
+  currentOrder.push(item)
+      
+  const li = document.createElement('li')
+  li.innerText = drink
+  document.querySelector('#current-order').appendChild(li)
+}
 
-// https://blog.teamtreehouse.com/getting-started-speech-synthesis-api
+function sendOrder() {
+  let customerName = document.querySelector('#customerName').value
+  console.log(customerName)
+
+  fetch('order', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'order': currentOrder,
+      'customerName': customerName
+    })
+  }).then(function (response) {
+    window.location.reload()
+  })
+}
+
+function clearOrder(){
+  currentOrder = []
+  document.querySelector('ul').innerHTML = ''
+}
+

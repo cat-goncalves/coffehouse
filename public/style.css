@@ -2,10 +2,38 @@ body{
   padding-top:80px;
   word-wrap:break-word;
 }
-img{
-  height: 200px;
+img {
+  display: inline-block;
 }
+
 .barista, .id,
 .hide {
   display: none;
 }
+
+.col-sm-4 {
+  height: 500px;
+  background-color: lightgrey;
+}
+.col-sm-5 {
+  background-color: lightgrey;
+  margin: 1%;
+  padding: 2%;
+}
+
+/* button:active {
+  background-color: lightcyan;
+} */
+/* :checked pseudoselector can apply styling to all checked radio buttons, but [checked] attribute lives in the DOM and does not update */
+
+/* input[type=radio] {
+  appearance: none;
+}
+label {
+  border: 1px solid black;
+  background-color: white;
+  padding: 0 2%;
+}
+input[type=radio]:after{
+  background-color: blue;
+} */

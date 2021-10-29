@@ -1,19 +1,233 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Coffeehouse</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
+        <!-- <p>Login or Signup:</p> -->
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
 
-    <div class="jumbotron text-center">
         <h1>Coffeehouse</h1>
-        <!-- <img src="img/savage21.jpg" alt="coffee photo"> -->
+        <div class="grid">
+            <div class="col-sm-8">
+                <input type="text" id="customerName" name="customerName" placeholder="Customer Name">
 
-        <form action="order" method="post">
+                <h3>Menu</h3>
+
+                <!-- Latte -->
+                <div class="col-sm-5">
+                    <img src="https://via.placeholder.com/50/000000" alt="">
+                    <h4>Latte</h4>
+                    <h5>&dollar;1.00</h5>
+
+                    <input type="hidden" name="drink" value="latte">
+
+                    <h6>Temp:</h6>
+                    <input type="radio" class="temp btn btn-primary" name="latte-temp" id="hot" value="hot">
+                    <label for="hot">Hot</label>
+                    <input type="radio" name="latte-temp" id="iced" value="iced">
+                    <label for="iced">Iced</label>
+
+
+                    <h6>Size:</h6>
+                    <input type="radio" class="size" name="latte-size" id="small" value="small">
+                    <label for="small">Small</label>
+                    <input type="radio" name="latte-size" id="medium" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="latte-size" id="large" value="large">
+                    <label for="large">Large</label>
+
+                    <h6>Milk</h6>
+                    <input type="radio" name="latte-milk" id="skim" value="skim">
+                    <label for="skim">Skim</label>
+                    <input type="radio" name="latte-milk" id="oat" value="oat">
+                    <label for="oat">Oat</label>
+
+                    <h6>Sugar</h6>
+                    <input type="radio" name="latte-sugar" id="stevia" value="stevia">
+                    <label for="stevia">Stevia</label>
+                    <input type="radio" name="latte-sugar" id="raw" value="sugar">
+                    <label for="raw">Raw</label>
+                    <input type="number" min="0" max="10">
+
+                    <h6>Other:</h6>
+                    <input type="radio" name="latte-other" id="extraHot" value="extra-hot">
+                    <label for="extraHot">Extra Hot</label>
+                    <input type="radio" name="latte-other" id="lightIce" value="light-ice">
+                    <label for="lightIce">Light Ice</label>
+                    <input type="radio" name="latte-other" id="extraIce" value="extra-ice">
+                    <label for="extraIce">Extra Ice</label>
+
+
+                    <input type="submit" value="Add to Order" class="addToOrder">
+                </div>
+
+                <!-- Cappucino -->
+                <div class="col-sm-5">
+                    <img src="https://via.placeholder.com/50/000000" alt="">
+                    <h4>Cappucino</h4>
+                    <h5>&dollar;2.00</h5>
+
+                    <input type="hidden" name="drink" value="cappucino">
+
+                    <h6>Temp:</h6>
+                    <input type="radio" name="cappucino-temp" id="hot" value="hot">
+                    <label for="hot">Hot</label>
+                    <input type="radio" name="cappucino-temp" id="iced" value="iced">
+                    <label for="iced">Iced</label>
+
+
+                    <h6>Size:</h6>
+                    <input type="radio" name="cappucino-size" id="small" value="small">
+                    <label for="small">Small</label>
+                    <input type="radio" name="cappucino-size" id="medium" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="cappucino-size" id="large" value="large">
+                    <label for="large">Large</label>
+
+                    <h6>Milk</h6>
+                    <input type="radio" name="cappucino-milk" id="skim" value="skim">
+                    <label for="skim">Skim</label>
+                    <input type="radio" name="cappucino-milk" id="oat" value="oat">
+                    <label for="oat">Oat</label>
+
+                    <h6>Sugar</h6>
+                    <input type="radio" name="cappucino-sugar" id="stevia" value="stevia">
+                    <label for="stevia">Stevia</label>
+                    <input type="radio" name="cappucino-sugar" id="raw" value="sugar">
+                    <label for="raw">Raw</label>
+                    <input type="number" min="0" max="10">
+
+                    <h6>Other:</h6>
+                    <input type="radio" name="cappucino-other" id="extraHot" value="extra-hot">
+                    <label for="extraHot">Extra Hot</label>
+                    <input type="radio" name="cappucino-other" id="lightIce" value="light-ice">
+                    <label for="lightIce">Light Ice</label>
+                    <input type="radio" name="cappucino-other" id="extraIce" value="extra-ice">
+                    <label for="extraIce">Extra Ice</label>
+
+
+                    <input type="submit" value="Add to Order" class="addToOrder">
+                </div>
+
+                <!-- Cold Brew -->
+                <div class="col-sm-5">
+                    <img src="https://via.placeholder.com/50/000000" alt="">
+                    <h4>Cold Brew</h4>
+                    <h5>&dollar;3.00</h5>
+                    
+                    <input type="hidden" name="drink" value="coldBrew">
+
+                    <h6>Temp:</h6>
+                    <input type="radio" name="coldBrew-temp" id="hot" value="hot">
+                    <label for="hot">Hot</label>
+                    <input type="radio" name="coldBrew-temp" id="iced" value="iced">
+                    <label for="iced">Iced</label>
+
+
+                    <h6>Size:</h6>
+                    <input type="radio" name="coldBrew-size" id="small" value="small">
+                    <label for="small">Small</label>
+                    <input type="radio" name="coldBrew-size" id="medium" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="coldBrew-size" id="large" value="large">
+                    <label for="large">Large</label>
+
+                    <h6>Milk</h6>
+                    <input type="radio" name="coldBrew-milk" id="skim" value="skim">
+                    <label for="skim">Skim</label>
+                    <input type="radio" name="coldBrew-milk" id="oat" value="oat">
+                    <label for="oat">Oat</label>
+
+                    <h6>Sugar</h6>
+                    <input type="radio" name="coldBrew-sugar" id="stevia" value="stevia">
+                    <label for="stevia">Stevia</label>
+                    <input type="radio" name="coldBrew-sugar" id="raw" value="sugar">
+                    <label for="raw">Raw</label>
+                    <input type="number" min="0" max="10">
+
+                    <h6>Other:</h6>
+                    <input type="radio" name="coldBrew-other" id="extraHot" value="extra-hot">
+                    <label for="extraHot">Extra Hot</label>
+                    <input type="radio" name="coldBrew-other" id="lightIce" value="light-ice">
+                    <label for="lightIce">Light Ice</label>
+                    <input type="radio" name="coldBrew-other" id="extraIce" value="extra-ice">
+                    <label for="extraIce">Extra Ice</label>
+
+
+                    <input type="submit" value="Add to Order" class="addToOrder">
+                </div>
+
+                <!-- Tea -->
+                <div class="col-sm-5">
+                    <img src="https://via.placeholder.com/50/000000" alt="">
+                    <h4>Tea</h4>
+                    <h5>&dollar;4.00</h5>
+
+                    <input type="hidden" name="drink" value="tea">
+
+                    <h6>Temp:</h6>
+                    <input type="radio" name="tea-temp" id="hot" value="hot">
+                    <label for="hot">Hot</label>
+                    <input type="radio" name="tea-temp" id="iced" value="iced">
+                    <label for="iced">Iced</label>
+
+
+                    <h6>Size:</h6>
+                    <input type="radio" name="tea-size" id="small" value="small">
+                    <label for="small">Small</label>
+                    <input type="radio" name="tea-size" id="medium" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="tea-size" id="large" value="large">
+                    <label for="large">Large</label>
+
+                    <h6>Milk</h6>
+                    <input type="radio" name="tea-milk" id="skim" value="skim">
+                    <label for="skim">Skim</label>
+                    <input type="radio" name="tea-milk" id="oat" value="oat">
+                    <label for="oat">Oat</label>
+
+                    <h6>Sugar</h6>
+                    <input type="radio" name="tea-sugar" id="stevia" value="stevia">
+                    <label for="stevia">Stevia</label>
+                    <input type="radio" name="tea-sugar" id="raw" value="sugar">
+                    <label for="raw">Raw</label>
+                    <input type="number" min="0" max="10">
+
+                    <h6>Other:</h6>
+                    <input type="radio" name="tea-other" id="extraHot" value="extra-hot">
+                    <label for="extraHot">Extra Hot</label>
+                    <input type="radio" name="tea-other" id="lightIce" value="light-ice">
+                    <label for="lightIce">Light Ice</label>
+                    <input type="radio" name="tea-other" id="extraIce" value="extra-ice">
+                    <label for="extraIce">Extra Ice</label>
+
+
+                    <input type="submit" value="Add to Order" class="addToOrder">
+                </div>
+
+
+            </div>
+
+            <div class="col-sm-4">
+                <h3>Current Order</h3>
+                <ul id="current-order">
+
+                </ul>
+
+
+                <button id="clearOrder">Clear Order</button>
+                <button id="sendOrder">Send Order</button>
+            </div>
+
+            <!-- <form action="order" method="post">
             <input type="text" name="customerName" placeholder="Customer Name">
             <select name="coffee" id="coffee">
                 <option value="hot coffee">Hot Coffee</option>
@@ -22,15 +236,14 @@
                 <option value="cappucino">Cappucino</option>
                 <option value="espresso shot">Espresso Shot</option>
             </select>
-            <button type="submit">Submit</button>
-        </form>
-        <p>Login or Signup:</p>
+            <input type="submit" value="Submit">
+        </form> -->
 
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+        </div>
 
     </div>
+    <script src="main.js"></script>
 
-</div>
 </body>
+
 </html>
